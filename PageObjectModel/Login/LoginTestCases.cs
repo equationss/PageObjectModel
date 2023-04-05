@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace PageObjectModel.Login
 {
     [TestClass]
-    public class LoginTestCases
+    public class LoginTestCases : BasePage
     {
         private TestContext instance;
         public TestContext TestContext
@@ -20,16 +20,19 @@ namespace PageObjectModel.Login
         }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Data.xml", "validusername", DataAccessMethod.Sequential)]
+        //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "Data.xml", "validusername", DataAccessMethod.Sequential)]
 
         public void ValidLogin()
         {
-            string user = TestContext.DataRow["User"].ToString();
-            string pass = TestContext.DataRow["pass"].ToString();
-            IWebDriver driver = new ChromeDriver();
+            //string user = TestContext.DataRow["User"].ToString();
+            //string pass = TestContext.DataRow["pass"].ToString();
+            //IWebDriver driver = new ChromeDriver();
+
+            BasePage.SeleniumInit("chrome");
+              
             driver.Url = "https://adactinhotelapp.com/";
             LoginPage loginForm = new LoginPage();
-            loginForm.LoginSteps(driver, "JunaidJarral", "ABC@123");
+            loginForm.LoginSteps("JunaidJarral", "ABC@123");
             driver.Close();
         }
 

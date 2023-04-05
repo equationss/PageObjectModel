@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PageObjectModel.Login
 {
-    public class LoginPage
+    public class LoginPage : BasePage
     {
         #region Element Locator
 
@@ -19,7 +19,7 @@ namespace PageObjectModel.Login
 
         #region Test Steps
 
-        public void LoginSteps(IWebDriver driver, string username, string password)
+        public void LoginSteps(string username, string password)
 
         {
             driver.FindElement(UsernameField).SendKeys(username);
